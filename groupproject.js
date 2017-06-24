@@ -7,6 +7,7 @@ var config = {
   messagingSenderId: "555005447916"
   };
 firebase.initializeApp(config);
+var database = firebase.database();
 function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
