@@ -18,9 +18,49 @@
   body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
   .mySlides {display:none}
   </style>
-
 <body>
 
+  <div class="container">
+
+    <br>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="text-center">Sign-Up Today!</h1>
+    </div>
+
+    <div class="row">
+
+      <!-- Sign-Up Panel-->
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">New Member Sign-Up</h3>
+          </div>
+          <div class="panel-body">
+
+            <!-- Sign-up Form (note the various input "types")-->
+            <form role="form">
+              <div class="form-group">
+                <label for="name-input">Name:</label>
+                <input class="form-control" id="name-input" type="text">
+              </div>
+              <div class="form-group">
+                <label for="email-input">Email:</label>
+                <input class="form-control" id="email-input" type="email">
+              </div>
+              <div class="form-group">
+                <label for="age-input">Apartment Number</label>
+                <input class="form-control" id="age-input" type="number">
+              </div>
+              <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
   <body class="w3-content w3-border-left w3-border-right">
 
   <!-- Sidebar/menu -->
@@ -30,16 +70,9 @@
       <h3>Pay Me Bitch</h3>
       <h3>Due This Month</h3>
       <hr>
-      <form action="/action_page.php" target="_blank">
-        <p><label><i class="fa fa-calendar-check-o"></i> Check In</label></p>
-        <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="CheckIn" required>
-        <p><label><i class="fa fa-calendar-o"></i> Check Out</label></p>
-        <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="CheckOut" required>
-        <p><label><i class="fa fa-male"></i> Adults</label></p>
-        <input class="w3-input w3-border" type="number" value="1" name="Adults" min="1" max="6">
-        <p><label><i class="fa fa-child"></i> Kids</label></p>
-        <input class="w3-input w3-border" type="number" value="0" name="Kids" min="0" max="6">
-        <p><button class="w3-button w3-block w3-green w3-left-align" type="submit"><i class="fa fa-search w3-margin-right"></i> Search availability</button></p>
+      <form>
+        <input type="text">
+        <input type="submit" value="save">
       </form>
     </div>
     <div class="w3-bar-block">
@@ -64,33 +97,7 @@
     <div class="w3-hide-large" style="margin-top:80px"></div>
 
     <!-- Slideshow Header -->
-    <div class="w3-container" id="apartment">
-      <h2 class="w3-text-green">The Apartment</h2>
-      <div class="w3-display-container mySlides">
-      <img src="/w3images/livingroom.jpg" style="width:100%;margin-bottom:-6px">
-        <div class="w3-display-bottomleft w3-container w3-black">
-          <p>Pepco</p>
-        </div>
-      </div>
-      <div class="w3-display-container mySlides">
-      <img src="/w3images/diningroom.jpg" style="width:100%;margin-bottom:-6px">
-        <div class="w3-display-bottomleft w3-container w3-black">
-          <p>Zillow</p>
-        </div>
-      </div>
-      <div class="w3-display-container mySlides">
-      <img src="/w3images/bedroom.jpg" style="width:100%;margin-bottom:-6px">
-        <div class="w3-display-bottomleft w3-container w3-black">
-          <p>Reminder</p>
-        </div>
-      </div>
-      <div class="w3-display-container mySlides">
-      <img src="/w3images/livingroom2.jpg" style="width:100%;margin-bottom:-6px">
-        <div class="w3-display-bottomleft w3-container w3-black">
-          <p>Living Room II</p>
-        </div>
-      </div>
-    </div>
+
     <div class="w3-container">
       <h4><strong>Pay the Rent</strong></h4>
       <div class="w3-row w3-large">
