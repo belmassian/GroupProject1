@@ -19,44 +19,45 @@ function w3_close() {
 }
 
 
-// Capture Button Click
-$("#add-user").on("click", function(event) {
-  // prevent page from refreshing when form tries to submit itself
+var name = "";
+var email = "";
+var Apartment = "";
+
+// Click Button changes what is stored in firebase
+$("#click-button").on("click", function() {
+  // Prevent the page from refreshing
   event.preventDefault();
 
-  // Capture user inputs and store them into variables
-  var name = $("#name-input").val().trim();
-  var email = $("#email-input").val().trim();
-  var apartmentnumb = $("#apartmentnumb-input").val().trim();
+  // Get inputs
+  name = $("#name-input").val().trim();
+  email = $("#email-input").val().trim();
+  Apartment = $("#Apartment-input").val().trim();
 
-  // Console log each of the user inputs to confirm we are receiving them
-  console.log(name);
-  console.log(email);
-  console.log(apartmentnumb);
-
-  // Replaces the content in the "recent-member" div
-  $("#name-display").html();
-  $("#email-display").html();
-  $("#apartmentnumb-display").html();
-
-  // Output all of the new information into the relevant sections
-  $("#name-display").html(name);
-  $("#email-display").html(email);
-  $("#apartmentnumb-display").html(apartmentnumb);
-
-  // Clear localStorage
-  localStorage.clear();
-
-  // Store all content into localStorage
-  localStorage.setItem("name", name);
-  localStorage.setItem("email", email);
-  localStorage.setItem("apartmentnumb", apartmentnumb);
+  // Change what is saved in firebase
+  database.ref().set({
+    name: name,
+    email: email,
+    Apartment: Apartment
+  });
 });
 
-// By default display the content from localStorage
-$("#name-display").html(localStorage.getItem("name"));
-$("#email-display").html(localStorage.getItem("email"));
-$("#apartmentnumb-display").html(localStorage.getItem("apartmentnumb"));
+// Firebase is always watching for changes to the data.
+// When changes occurs it will print them to console and html
+database.ref().on("value", function(snapshot) {
+
+  // Print the initial data to the console.
+  console.log(snapshot.val());
+
+  // Log the value of the various properties
+  console.log(snapshot.val().name);
+  console.log(snapshot.val().email);
+  console.log(snapshot.val().Apartment);
+
+  // Change the HTML
+  $("#displayed-data").html(snapshot.val().name + " | " + snapshot.val().email + " | " + snapshot.val().Apartment);
+}, function(errorObject) {
+  console.log("The read failed: " + errorObject.code);
+});
 
 
 var list = JSON.parse(localStorage.getItem("todolist"));
