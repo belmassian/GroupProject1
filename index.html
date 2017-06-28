@@ -21,6 +21,9 @@
   <style>
 
   html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+  img {
+    padding: 50px;
+  }
   </style>
 <body>
 
@@ -38,14 +41,14 @@
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
           <img src="https://media.giphy.com/media/XyyjAzF0kYI4U/giphy.gif" style="width:100%" alt="Avatar">
-          <div class="w3-display-bottomleft w3-container w3-text-white">
+          <div class="w3-display-bottomleft w3-container w3-text-teal">
             <h2><strong>Welcome To ShareBEAR!<strong></h2>
           </div>
         </div>
         <div class="w3-container">
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Bills Due Today!</b></p>
-          <p>Bills Coming Up</p>
-          <p>Things to Do Near You</p>
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Things to Do Near You!</b></p>
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Bills Coming Up!</b></p>
         </div>
       </div><br>
 
@@ -82,6 +85,7 @@
               </div>
               <button class="btn btn-default" id="add-user" type="submit">Submit</button>
             </form>
+            <div class="displayed-data"></div>
         </div>
       </div>
 
