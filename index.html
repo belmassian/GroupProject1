@@ -46,10 +46,23 @@
           </div>
         </div>
         <div class="w3-container">
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Bills Due Today!</b></p>
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Things to Do Near You!</b></p>
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Bills Coming Up!</b></p>
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Your Bills!</b></p>
         </div>
+        <div class="container"></div>
+                <div class="panel-body">
+                  <table class="table table-hover" style= width 100% id='bills-table'>
+                    <thead>
+                      <tr>
+                        <th>Company Name/Bill Type</th>
+                        <th>Amount Due</th>
+                        <th>Date Due</th>
+                        <th>Account No.</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
       </div><br>
 
     <!-- End Left Column -->
@@ -59,59 +72,45 @@
 
     <div class="w3-twothird">
       <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Sign Up for ShareBEAR</h2>
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Keep Track of Your Bills</h2>
         <div class="w3-container">
           <h5 class="w3-opacity"><b></b></h5>
           <h6 class="w3-text-teal">
-            <form role="form">
+          <form role="form">
               <div class="form-group">
-                <label for="name-input">Name:</label>
+                <label for="name-input">Company Name/Bill Type</label>
                 <input class="form-control" id="name-input" type="text">
               </div>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b></b></h5>
-          <h6 class="w3-text-teal">
-            <div class="form-group">
-              <label for="email-input">Email:</label>
-              <input class="form-control" id="email-input" type="email">
-            </div>
         </div>
         <div class="w3-container">
           <h5 class="w3-opacity"></h5>
           <h6 class="w3-text-teal">
               <div class="form-group">
-                <label for="apartment-input">Apartment Number</label>
-                <input class="form-control" id="apartment-input" type="number">
-              </div>
-              <button class="btn btn-default" id="add-user" type="submit">Submit</button>
-            </form>
-        </div>
-      </div>
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title"><strong>Current Roommates</strong></h3>
-              </div>
-              <div class="panel-body">
-                <table class="table table-hover" id='roommates-table'>
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Phone</th>
-                      <th>Apartment</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  </tbody>
-                </table>
+                <label for="amount-input">Amount</label>
+                <input class="form-control" id="amount-input" type="number">
               </div>
             </div>
-      <div class="w3-container w3-card-2 w3-white">
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b></b></h5>
+          <h6 class="w3-text-teal">
+            <div class="form-group">
+              <label for="date-input">Date Due</label>
+              <input class="form-control" id="date-input" type="MM/DD/YYYY">
+            </div>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"></h5>
+          <h6 class="w3-text-teal">
+            <div class="form-group">
+              <label for="accountNumb-input">Account Number</label>
+              <input class="form-control" id="accountNumb-input" type="number">
+            </div>
+            <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      </div>
+      <div class="w3-container w3-card-2 w3-white" style=clear:both>
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Contact Your Roomates!</h2>
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Roommate 1</b></h5>
