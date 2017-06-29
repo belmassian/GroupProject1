@@ -1,3 +1,6 @@
+
+
+
 var config = {
   apiKey: "AIzaSyAmzWqyKDVOt80b43DplFYGdD1ChLga6xk",
   authDomain: "groupproject1-86e02.firebaseapp.com",
@@ -22,6 +25,18 @@ function callAPI() {
 
 callAPI();
 
+
+function callReddit () {
+     var queryURL = "https://newsapi.org/v1/articles?source=reddit-r-all&sortBy=top&apiKey=f1ebf9a2fcd943059f77fd0e2b638fff";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).done(function(response) {
+      console.log(response);
+    });
+
+    callReddit();
 
 // Click Button changes what is stored in firebase
 $("#click-button").on("click", function() {
