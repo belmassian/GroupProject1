@@ -9,19 +9,28 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
-function callAPI() {
-  var queryURL = "https://newsapi.org/v1/articles?source=buzzfeed&sortBy=top&apiKey=34c203eacb6b44899e6533749db691e7";
+function callBuzzFeedAPI() {
+  var queryURL = "https://newsapi.org/v1/articles?source=buzzfeed&sortBy=top&apiKey=34c203eacb6b44899e6533749db691e7&limit=5";
 
   $.ajax({
     url: queryURL,
     method: "GET",
   }).done(function(response1) {
-    console.log(response1)
+    
+    var i = 0;
+
+    for (i; i<5; i++) {
+      var articleTitles = response1.articles[i].title;
+      var articleImages = response1.articles[i].urlToImage;
+      $('#articleTitle').append(articleTitles + "<br>");
+      $('#articleImage').append(articleImages + "<br>");
+    };
+    console.log(response1.articles[i]);
+
   });
 };
 
-callAPI();
-
+callBuzzFeedAPI();
 
 // Click Button changes what is stored in firebase
 $("#click-button").on("click", function() {
