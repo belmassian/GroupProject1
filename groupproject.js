@@ -10,42 +10,53 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 
-var name = "";
-var email = "";
-var Apartment = "";
+
 
 // Click Button changes what is stored in firebase
 $("#click-button").on("click", function() {
   // Prevent the page from refreshing
   event.preventDefault();
-
+  var name = "";
+  var email = "";
+  var phone= "";
+  var Apartment = "";
   // Get inputs
-  name = $("#name-input").val().trim();
-  email = $("#email-input").val().trim();
-  Apartment = $("#Apartment-input").val().trim();
-
-  // Change what is saved in firebase
-  database.ref().set({
+  var newRoommate{
     name: name,
     email: email,
-    Apartment: Apartment
-  });
+    phone: phone,
+    Apartment: apartment,
+  }
+  database.ref().push(newRoommate);
+  console.log(newRoommate.name);
+  console.log(newRoommate.email);
+  console.log(newRoommate.phone);
+  console.log(newRoommate.Apartment);
+  alert("Employee successfully added");
+  $("#name-input").val("");
+  $("#email-input").val("");
+  $("#phone-input").val("");
+  $("#apartment-input").val("");
 });
 
-// Firebase is always watching for changes to the data.
-// When changes occurs it will print them to console and html
-database.ref().on("value", function(snapshot) {
+database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
-  // Print the initial data to the console.
-  console.log(snapshot.val());
+  console.log(childSnapshot.val());
+  var name = childSnapshot.val().name;
+  var email = childSnapshot.val().role;
+  var phone = childSnapshot.val().start;
+  var apartment = childSnapshot.val().rate;
 
-  // Log the value of the various properties
-  console.log(snapshot.val().name);
-  console.log(snapshot.val().email);
-  console.log(snapshot.val().Apartment);
+  console.log(name);
+  console.log(email);
+  console.log(phone);
+  console.log(apartment);
 
-  // Change the HTML
-  $("#displayed-data").html(snapshot.val().name + " | " + snapshot.val().email + " | " + snapshot.val().Apartment);
+
+  // Add each train's data into the table
+  $("#roommates-table > tbody").append("<tr><td>" + name + "</td><td>" + email + "</td><td>" +
+  phone + "</td><td>" + apartment);
+});
 }, function(errorObject) {
   console.log("The read failed: " + errorObject.code);
 });
