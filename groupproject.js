@@ -12,19 +12,45 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
-function callAPI() {
-  var queryURL = "https://newsapi.org/v1/articles?source=buzzfeed&sortBy=top&apiKey=34c203eacb6b44899e6533749db691e7";
+function callBuzzFeedAPI() {
+  var queryURL = "https://newsapi.org/v1/articles?source=buzzfeed&sortBy=top&apiKey=34c203eacb6b44899e6533749db691e7&limit=5";
 
   $.ajax({
     url: queryURL,
     method: "GET",
   }).done(function(response1) {
-    console.log(response1)
+    
+    var i = 0;
+
+    for (i; i<5; i++) {
+
+      var articleTitles = response1.articles[i].title;
+      var articleImageURLs = response1.articles[i].urlToImage;
+      var image = $("<img>");
+
+      $('#articleTitle').append(articleTitles + "<br>");
+      $(image).attr("src", articleImageURLs);
+      $('#articleImage').append(image + "<br>");
+
+    };
+    console.log(response1);
+
   });
 };
 
-callAPI();
+callBuzzFeedAPI();
 
+function callReddit () {
+     var queryURL = "https://newsapi.org/v1/articles?source=reddit-r-all&sortBy=top&apiKey=f1ebf9a2fcd943059f77fd0e2b638fff";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).done(function(response) {
+      console.log(response);
+    });
+}
+    callReddit();
 
 function callReddit () {
      var queryURL = "https://newsapi.org/v1/articles?source=reddit-r-all&sortBy=top&apiKey=f1ebf9a2fcd943059f77fd0e2b638fff";
@@ -94,4 +120,7 @@ database.ref().on("child_added", function(snapshot) {
   // Add each train's data into the table
   $("tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().amount + "</td><td>" +
   snapshot.val().date + "</td><td>" + snapshot.val().accountNumb);
-})
+
+});
+
+
