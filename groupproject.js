@@ -52,6 +52,18 @@ function callReddit () {
 }
     callReddit();
 
+function callReddit () {
+     var queryURL = "https://newsapi.org/v1/articles?source=reddit-r-all&sortBy=top&apiKey=f1ebf9a2fcd943059f77fd0e2b638fff";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).done(function(response) {
+      console.log(response);
+    });
+
+    callReddit();
+
 // Click Button changes what is stored in firebase
 $("form").on("submit", function(event) {
   // Prevent the page from refreshing
@@ -108,4 +120,7 @@ database.ref().on("child_added", function(snapshot) {
   // Add each train's data into the table
   $("tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().amount + "</td><td>" +
   snapshot.val().date + "</td><td>" + snapshot.val().accountNumb);
+
 });
+
+
