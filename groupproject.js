@@ -13,47 +13,59 @@ var database = firebase.database();
 
 
 // Click Button changes what is stored in firebase
-$("#click-button").on("click", function() {
+$("form").on("submit", function(event) {
   // Prevent the page from refreshing
   event.preventDefault();
-  var name = "";
-  var amount = "";
-  var date= "";
-  var accountNumb = "";
-  // Get inputs
+
+  var name = $("#name-input").val();
+  var amount = $("#amount-input").val();
+  var date= $("#date-input").val();
+  var accountNumb = $("#accountNumb-input").val();
+
   var newBill = {
     name: name,
     amount: amount,
     date: date,
     accountNumb: accountNumb,
   }
+
   database.ref().push(newBill);
-  console.log(newRoommate.name);
-  console.log(newRoommate.amount);
-  console.log(newRoommate.date);
-  console.log(newRoommate.accountNumb);
   alert("Bill successfully added");
   $("#name-input").val("");
   $("#amount-input").val("");
   $("#date-input").val("");
   $("#accountNumb-input").val("");
+  $("tbody").html("");
+  database.ref().on("child_added", function(snapshot) {
+      console.log(snapshot.val());
+      console.log(snapshot.val().name);
+      console.log(snapshot.val().amount);
+      console.log(snapshot.val().date);
+      console.log(snapshot.val().accountNumb);
+
+      // Change the HTML to reflect
+      $("#name-display").html(snapshot.val().name);
+      $("#amount-display").html(snapshot.val().amount);
+      $("#date-display").html(snapshot.val().date);
+      $("#accountNumb-display").html(snapshot.val().accountNumb);
+
+    //var datePretty = moment.unix(date).format("MM/DD/YY");
+    // Add each train's data into the table
+    $("#bills-table > tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().amount + "</td><td>" +
+    snapshot.val().date + "</td><td>" + snapshot.val().accountNumb);
+  });
 });
 
-database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+database.ref().on("child_added", function(snapshot) {
 
-  console.log(childSnapshot.val());
-  var name = childSnapshot.val().name;
-  var amount = childSnapshot.val().amount;
-  var date = childSnapshot.val().date;
-  var accountNumb = childSnapshot.val().accountNumb;
+    // Change the HTML to reflect
+    $("#name-display").html(snapshot.val().name);
+    $("#amount-display").html(snapshot.val().amount);
+    $("#date-display").html(snapshot.val().date);
+    $("#accountNumb-display").html(snapshot.val().accountNumb);
 
-  console.log(name);
-  console.log(amount);
-  console.log(date);
-  console.log(accountNumb);
-
-
+  //var datePretty = moment.unix(date).format("MM/DD/YY");
   // Add each train's data into the table
-  $("#bills-table > tbody").append("<tr><td>" + name + "</td><td>" + amount + "</td><td>" +
-  date + "</td><td>" + accountNumb);
-});
+  $("tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().amount + "</td><td>" +
+  snapshot.val().date + "</td><td>" + snapshot.val().accountNumb);
+})
