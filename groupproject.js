@@ -26,13 +26,17 @@ function callBuzzFeedAPI() {
 
       var articleTitles = response1.articles[i].title;
       var articleImageURLs = response1.articles[i].urlToImage;
+      var imageDiv = $("<div>");
       var image = $("<img>");
 
-      $('#articleTitle').append(articleTitles + "<br>");
+      
       $(image).attr("src", articleImageURLs);
-      $('#articleImage').append(image + "<br>");
+      imageDiv.append(articleTitles + "<br>");
+      imageDiv.append(image);
+      $('.articleImage').append(imageDiv);
 
     };
+    
     console.log(response1);
 
   });
@@ -50,18 +54,6 @@ function callReddit () {
       console.log(response);
     });
 }
-    callReddit();
-
-function callReddit () {
-     var queryURL = "https://newsapi.org/v1/articles?source=reddit-r-all&sortBy=top&apiKey=f1ebf9a2fcd943059f77fd0e2b638fff";
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).done(function(response) {
-      console.log(response);
-    });
-
     callReddit();
 
 // Click Button changes what is stored in firebase
