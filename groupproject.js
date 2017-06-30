@@ -19,10 +19,9 @@ function callBuzzFeedAPI() {
     url: queryURL,
     method: "GET",
   }).done(function(response1) {
-    
-    var i = 0;
 
-    for (i; i<5; i++) {
+
+    for (var i=0; i<5; i++) {
 
       var articleTitles = response1.articles[i].title;
       var articleImageURLs = response1.articles[i].urlToImage;
@@ -38,7 +37,6 @@ function callBuzzFeedAPI() {
   });
 };
 
-callBuzzFeedAPI();
 
 function callReddit () {
      var queryURL = "https://newsapi.org/v1/articles?source=reddit-r-all&sortBy=top&apiKey=f1ebf9a2fcd943059f77fd0e2b638fff";
@@ -51,18 +49,20 @@ function callReddit () {
     });
 }
     callReddit();
+    callBuzzFeedAPI();
 
-function callReddit () {
-     var queryURL = "https://newsapi.org/v1/articles?source=reddit-r-all&sortBy=top&apiKey=f1ebf9a2fcd943059f77fd0e2b638fff";
+// function callReddit () {
+//      var queryURL = "https://newsapi.org/v1/articles?source=reddit-r-all&sortBy=top&apiKey=f1ebf9a2fcd943059f77fd0e2b638fff";
+//
+//     $.ajax({
+//       url: queryURL,
+//       method: "GET"
+//     }).done(function(response) {
+//       console.log(response);
+//     });
+//   }
 
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).done(function(response) {
-      console.log(response);
-    });
-
-    callReddit();
+    //callReddit();
 
 // Click Button changes what is stored in firebase
 $("form").on("submit", function(event) {
@@ -103,7 +103,7 @@ $("form").on("submit", function(event) {
 
     //var datePretty = moment.unix(date).format("MM/DD/YY");
     // Add each train's data into the table
-    $("#bills-table > tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().amount + "</td><td>" +
+    $("tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().amount + "</td><td>" +
     snapshot.val().date + "</td><td>" + snapshot.val().accountNumb);
   });
 });
@@ -122,5 +122,3 @@ database.ref().on("child_added", function(snapshot) {
   snapshot.val().date + "</td><td>" + snapshot.val().accountNumb);
 
 });
-
-
