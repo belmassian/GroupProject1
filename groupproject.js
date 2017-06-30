@@ -33,7 +33,7 @@ function callBuzzFeedAPI() {
 
       articleP.attr("href", articleURL);
       articleP.append(articleTitles);
-      
+
       image.attr("src", articleImageURLs);
       image.attr("width", "300px");
       image.attr("height", "300px");
@@ -49,6 +49,7 @@ function callBuzzFeedAPI() {
   });
 };
 
+callBuzzFeedAPI();
 
 function callReddit () {
      var queryURL = "https://newsapi.org/v1/articles?source=reddit-r-all&sortBy=top&apiKey=f1ebf9a2fcd943059f77fd0e2b638fff";
