@@ -44,8 +44,6 @@ function callBuzzFeedAPI() {
 
     };
 
-    console.log(response1);
-
   });
 };
 
@@ -73,7 +71,6 @@ function callReddit () {
       $('#articleImg').append(image);
 
       }
-      console.log(response);
 
     });
 }
@@ -117,7 +114,7 @@ $("form").on("submit", function(event) {
       $("#date-display").html(snapshot.val().date);
       $("#accountNumb-display").html(snapshot.val().accountNumb);
 
-    //var datePretty = moment.unix(date).format("MM/DD/YY");
+      var datePretty = moment.unix(date).format("MM/DD/YYYY");
     // Add each train's data into the table
     $("tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().amount + "</td><td>" +
     snapshot.val().date + "</td><td>" + snapshot.val().accountNumb);
@@ -132,7 +129,7 @@ database.ref().on("child_added", function(snapshot) {
     $("#date-display").html(snapshot.val().date);
     $("#accountNumb-display").html(snapshot.val().accountNumb);
 
-  //var datePretty = moment.unix(date).format("MM/DD/YY");
+
   // Add each train's data into the table
   $("tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().amount + "</td><td>" +
   snapshot.val().date + "</td><td>" + snapshot.val().accountNumb);
