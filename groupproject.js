@@ -42,10 +42,6 @@ function callBuzzFeedAPI() {
       imageDiv.append(image);
       $('.articleImage').append(imageDiv);
 
-      $('#articleTitle').append(articleTitles + "<br>");
-      $(image).attr("src", articleImageURLs);
-      $('#articleImage').append(image);
-
     };
 
     console.log(response1);
