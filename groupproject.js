@@ -25,18 +25,25 @@ function callBuzzFeedAPI() {
     for (i; i<5; i++) {
 
       var articleTitles = response1.articles[i].title;
+      var articleURL = response1.articles[i].url;
       var articleImageURLs = response1.articles[i].urlToImage;
+      var articleP = $("<a>");
       var imageDiv = $("<div>");
       var image = $("<img>");
 
+      articleP.attr("href", articleURL);
+      articleP.append(articleTitles);
       
-      $(image).attr("src", articleImageURLs);
-      imageDiv.append(articleTitles + "<br>");
+      image.attr("src", articleImageURLs);
+      image.attr("width", "300px");
+      image.attr("height", "300px");
+
+      imageDiv.append(articleP);
       imageDiv.append(image);
       $('.articleImage').append(imageDiv);
 
     };
-    
+
     console.log(response1);
 
   });
