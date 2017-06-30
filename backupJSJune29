@@ -12,46 +12,18 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
-function callBuzzFeedAPI() {
-  var queryURL = "https://newsapi.org/v1/articles?source=buzzfeed&sortBy=top&apiKey=34c203eacb6b44899e6533749db691e7&limit=5";
+function callAPI() {
+  var queryURL = "https://newsapi.org/v1/articles?source=buzzfeed&sortBy=top&apiKey=34c203eacb6b44899e6533749db691e7";
 
   $.ajax({
     url: queryURL,
     method: "GET",
   }).done(function(response1) {
-
-
-    for (var i=0; i<5; i++) {
-
-      var articleTitles = response1.articles[i].title;
-      var articleURL = response1.articles[i].url;
-      var articleImageURLs = response1.articles[i].urlToImage;
-      var articleP = $("<a>");
-      var imageDiv = $("<div>");
-      var image = $("<img>");
-
-
-      articleP.attr("href", articleURL);
-      articleP.append(articleTitles);
-      
-      image.attr("src", articleImageURLs);
-      image.attr("width", "300px");
-      image.attr("height", "300px");
-
-      imageDiv.append(articleP);
-      imageDiv.append(image);
-      $('.articleImage').append(imageDiv);
-
-      $('#articleTitle').append(articleTitles + "<br>");
-      $(image).attr("src", articleImageURLs);
-      $('#articleImage').append(image);
-
-    };
-
-    console.log(response1);
-
+    console.log(response1)
   });
 };
+
+callAPI();
 
 
 function callReddit () {
@@ -61,27 +33,10 @@ function callReddit () {
       url: queryURL,
       method: "GET"
     }).done(function(response) {
-
-
-      var i=0;
-
-      for (var i = 0; i <5; i++) {
-        var articleHeaders = response.articles[i].title;
-        var articleImg = response.articles[i].urlToImage;
-        var image = $("<img>");
-
-
-      $('#articleHeaders').append(articleHeaders + "<br>");
-      $(image).attr("src", articleImg);
-      $('#articleImg').append(image);
-
-      }
       console.log(response);
-
     });
-}
-    callReddit();
 
+    callReddit();
 
 // Click Button changes what is stored in firebase
 $("form").on("submit", function(event) {
@@ -122,7 +77,7 @@ $("form").on("submit", function(event) {
 
     //var datePretty = moment.unix(date).format("MM/DD/YY");
     // Add each train's data into the table
-    $("tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().amount + "</td><td>" +
+    $("#bills-table > tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().amount + "</td><td>" +
     snapshot.val().date + "</td><td>" + snapshot.val().accountNumb);
   });
 });
@@ -139,5 +94,4 @@ database.ref().on("child_added", function(snapshot) {
   // Add each train's data into the table
   $("tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().amount + "</td><td>" +
   snapshot.val().date + "</td><td>" + snapshot.val().accountNumb);
-
-});
+})
