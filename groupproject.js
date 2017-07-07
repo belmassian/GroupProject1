@@ -63,8 +63,8 @@ function callBuzzFeedAPI() {
       articleP.append(articleTitles);
 
       image.attr("src", articleImageURLs);
-      image.attr("width", "300px");
-      image.attr("height", "300px");
+      image.attr("style", "width:300px");
+      image.attr("style", "height:200px");
 
       imageDiv.append(articleP);
       imageDiv.append(image);
@@ -104,8 +104,8 @@ function callReddit() {
       articleH.append(articleHeaders);
 
       image.attr("src", articleImg);
-      image.attr("width", "300px");
-      image.attr("height", "300px");
+      image.attr("style", "width:300px");
+      image.attr("style", "height:200px");
 
       imageDiv.append(articleH);
       imageDiv.append(image);

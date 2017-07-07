@@ -29,16 +29,30 @@
         h3,
         h4,
         h5,
-        h6 {
+        h6,
+        .jumbotron {
             font-family: "Roboto", sans-serif
         }
         
-        img {
+/*        img {
             padding: 50px;
+            height: 400px;
+            width: 400px;
+        }*/
+
+        img.reddit, img.buzzfeed {
+          max-height: 155.94px;
+          max-width: 480px
         }
         
-        body {
+        body, .jumbotron {
             text-color: teal;
+        }
+
+        .jumbotron {
+          text-align: center;
+          color:teal;
+          background-image: url("https://media.giphy.com/media/XyyjAzF0kYI4U/giphy.gif");
         }
         
         .w3-twothird {
@@ -46,16 +60,33 @@
         }
 
         .buzzfeedSection {
-          width: 100%;
+          width: 80%;
+        }
+
+        .redditSection {
+          width: 80%;
         }
 
         .row {
           max-height: 640px;
         }
 
+        .w3-container {
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+  
+        a {
+          text-align: center;
+        }
 
         </style>
         </head>
+
+        <div class="jumbotron">
+  <h1>Welcome to ShareBear!</h1>
+  <p>Everyone needs to get paid!</p>
+</div>
 
         <body class="w3-light-grey">
             <!-- Page Container -->
@@ -63,45 +94,20 @@
                 <!-- The Grid -->
                 <div class="w3-row-padding">
                     <!-- Right Column -->
-                    <div class="container buzzfeedSection">
-                        <h2><img class="buzzfeed" src="https://media.giphy.com/media/IcSEoeFjI2XPG/giphy.gif" style="width:100%" alt="buzzfeed"></h2>
-                        <div id="myCarousel" class="carousel slide">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#myCarousel" data-slide-to="1"></li>
-                                <li data-target="#myCarousel" data-slide-to="2"></li>
-                                <li data-target="#myCarousel" data-slide-to="3"></li>
-                                <li data-target="#myCarousel" data-slide-to="4"></li>
-                            </ol>
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                </div>
-                            </div>
-                            <!-- Left and right controls -->
-                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
+
                         <!-- End Right Column -->
-                      </div>
+                      
                     <!-- Left Column -->
                     <div class="row">
                     <div class="w3-third">
                        
                             <div class="w3-white w3-text-grey w3-card-4">
-                                <div class="w3-display-container">
+                             <!--    <div class="w3-display-container">
                                     <img src="https://media.giphy.com/media/XyyjAzF0kYI4U/giphy.gif" style="width:100%" alt="Avatar">
                                     <div class="w3-display-bottomleft w3-container w3-text-teal">
                                         <h2><strong>Welcome To ShareBEAR!<strong></h2>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="w3-container">
                                     <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Your Bills!</b></p>
                                 </div>
@@ -193,7 +199,39 @@
                         </div>
                     </div>
 </div>
-                    <div class="container">
+<div class="buzzfeedReddit row">
+              <div class="w3-half">
+                    <div class="container buzzfeedSection">
+                        <h2><img class="buzzfeed" src="https://media.giphy.com/media/IcSEoeFjI2XPG/giphy.gif" style="width:100%" alt="buzzfeed"></h2>
+                        <div id="myCarousel" class="carousel slide">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                                <li data-target="#myCarousel" data-slide-to="3"></li>
+                                <li data-target="#myCarousel" data-slide-to="4"></li>
+                            </ol>
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                </div>
+                            </div>
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        </div>
+                </div>
+                
+                <div class="w3-half">
+                    <div class="container redditSection">
                         <h2><img class="reddit" src="reddit.png" style="width:100%" alt="reddit"></h2>
                         <div id="secondCarousel" class="carousel slide">
                             <!-- Indicators -->
@@ -225,6 +263,7 @@
                 </div>
                 <!-- End Page Container -->
             </div>
+          </div>
             <script src="groupproject.js"></script>
             <script type="text/javascript">
             $(document).ready(function() {
