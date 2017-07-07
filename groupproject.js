@@ -68,9 +68,12 @@ function callBuzzFeedAPI() {
 
       imageDiv.append(articleP);
       imageDiv.append(image);
-      $('.articleImage').append(imageDiv);
+      imageDiv.addClass('item');
+      $('.carousel-inner').append(imageDiv);
 
-    };
+    }
+
+    $($('.carousel-inner .item')[0]).addClass('active');
 
   });
 };
@@ -90,18 +93,39 @@ function callReddit() {
 
     for (var i = 0; i < 5; i++) {
       var articleHeaders = response.articles[i].title;
+      var articleURLs = response.articles[i].url;
       var articleImg = response.articles[i].urlToImage;
+      var articleH = $("<a>");
+      var imageDiv = $("<div>");
       var image = $("<img>");
 
 
-      $('#articleHeaders').append(articleHeaders + "<br>");
-      $(image).attr("src", articleImg);
-      $('#articleImg').append(image);
+      articleH.attr("href", articleURLs);
+      articleH.attr("target", "_blank");
+      articleH.append(articleHeaders);
+
+      image.attr("src", articleImg);
+      image.attr("width", "300px");
+      image.attr("height", "300px");
+
+      imageDiv.append(articleH);
+      imageDiv.append(image);
+      imageDiv.addClass('item');
+
+      // $('#articleHeaders').append(articleHeaders + "<br>");
+      // $(images).attr("src", articleImg);
+      // $('#articleImg').append(images);
+      $('.carousel-inner').append(imageDiv);
 
     }
-
+      $($('.carousel-inner .item')[0]).addClass('active');
   });
 }
+
+// $('#myCarousel').on('slide.bs.carousel', function () {
+//   // do something…
+// })
+
 callReddit();
 
 
