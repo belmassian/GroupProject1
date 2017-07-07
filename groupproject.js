@@ -1,5 +1,4 @@
 var config = {
-<<<<<<< HEAD
    apiKey: "AIzaSyAmzWqyKDVOt80b43DplFYGdD1ChLga6xk",
    authDomain: "groupproject1-86e02.firebaseapp.com",
    databaseURL: "https://groupproject1-86e02.firebaseio.com",
@@ -8,15 +7,6 @@ var config = {
    messagingSenderId: "555005447916"
  };
 
-=======
-  apiKey: "AIzaSyAmzWqyKDVOt80b43DplFYGdD1ChLga6xk",
-  authDomain: "groupproject1-86e02.firebaseapp.com",
-  databaseURL: "https://groupproject1-86e02.firebaseio.com",
-  projectId: "groupproject1-86e02",
-  storageBucket: "",
-  messagingSenderId: "555005447916"
-};
->>>>>>> bc0bdbccc0e1ce05fa459f1646c422898aabe283
 firebase.initializeApp(config);
 firebase.auth().getRedirectResult().then(function(result) {
   if (result.credential) {
@@ -64,11 +54,10 @@ function callBuzzFeedAPI() {
       imageDiv.append(articleP);
       imageDiv.append(image);
       imageDiv.addClass('item');
-      $('.carousel-inner').append(imageDiv);
-
+      $('#myCarousel .carousel-inner').append(imageDiv);
     }
 
-    $($('.carousel-inner .item')[0]).addClass('active');
+    $('#myCarousel .carousel-inner .item:first-child').addClass('active');
 
   });
 };
@@ -107,19 +96,14 @@ function callReddit() {
       imageDiv.append(image);
       imageDiv.addClass('item');
 
-      // $('#articleHeaders').append(articleHeaders + "<br>");
-      // $(images).attr("src", articleImg);
-      // $('#articleImg').append(images);
-      $('.carousel-inner').append(imageDiv);
+      $('#secondCarousel .carousel-inner').append(imageDiv);
 
     }
-      $($('.carousel-inner .item')[0]).addClass('active');
+
+    $('#secondCarousel .carousel-inner .item:first-child').addClass('active');
   });
 }
 
-// $('#myCarousel').on('slide.bs.carousel', function () {
-//   // do something…
-// })
 
 callReddit();
 
@@ -186,4 +170,6 @@ $(document).ready(function(){
     $("#myBtn").click(function(){
         $("#myModal").modal();
     });
+    $('#secondCarousel').carousel()
+
 });
