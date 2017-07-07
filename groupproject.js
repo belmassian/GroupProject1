@@ -1,4 +1,14 @@
 var config = {
+<<<<<<< HEAD
+   apiKey: "AIzaSyAmzWqyKDVOt80b43DplFYGdD1ChLga6xk",
+   authDomain: "groupproject1-86e02.firebaseapp.com",
+   databaseURL: "https://groupproject1-86e02.firebaseio.com",
+   projectId: "groupproject1-86e02",
+   storageBucket: "groupproject1-86e02.appspot.com",
+   messagingSenderId: "555005447916"
+ };
+
+=======
   apiKey: "AIzaSyAmzWqyKDVOt80b43DplFYGdD1ChLga6xk",
   authDomain: "groupproject1-86e02.firebaseapp.com",
   databaseURL: "https://groupproject1-86e02.firebaseio.com",
@@ -6,8 +16,23 @@ var config = {
   storageBucket: "",
   messagingSenderId: "555005447916"
 };
+>>>>>>> bc0bdbccc0e1ce05fa459f1646c422898aabe283
 firebase.initializeApp(config);
+firebase.auth().getRedirectResult().then(function(result) {
+  if (result.credential) {
+    // This gives you a Google Access Token.
+    var token = result.credential.accessToken;
+  }
+  var user = result.user;
+});
+
+// Start a sign in process for an unauthenticated user.
+var provider = new firebase.auth.GoogleAuthProvider();
+provider.addScope('profile');
+provider.addScope('email');
+firebase.auth().signInWithRedirect(provider);
 var database = firebase.database();
+var storage = firebase.storage();
 
 function callBuzzFeedAPI() {
   var queryURL = "https://newsapi.org/v1/articles?source=buzzfeed&sortBy=top&apiKey=34c203eacb6b44899e6533749db691e7&limit=5";
@@ -156,4 +181,9 @@ database.ref().on("child_added", function(snapshot) {
   $("tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" + snapshot.val().amount + "</td><td>" +
     snapshot.val().date + "</td><td>" + snapshot.val().accountNumb);
 
+});
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
 });
