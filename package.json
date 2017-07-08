@@ -1,0 +1,22 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "groupproject.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belmassian/GroupProject1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/belmassian/GroupProject1/issues"
+  },
+  "homepage": "https://github.com/belmassian/GroupProject1#readme",
+  "dependencies": {
+    "firebaseui": "^2.2.1"
+  }
+}
